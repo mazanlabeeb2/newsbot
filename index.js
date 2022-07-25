@@ -55,7 +55,10 @@ wppconnect.create({
   session: 'mySessionName',
   puppeteerOptions: {
     userDataDir: './tokens/mySessionName', // or your custom directory
-  },
+  }, 
+   headless: true, // Headless chrome
+  devtools: false, // Open devtools by default
+  useChrome: false, 
   // ...
 }).then((client) => start(client)).catch((error) => console.log(error));
 
