@@ -1,0 +1,20 @@
+{
+  "name": "newsdb",
+  "version": "1.0.0",
+  "description": "scraping news and inserting to database",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "news",
+    "scraper"
+  ],
+  "author": "Mazan Labeeb",
+  "license": "MIT",
+  "dependencies": {
+    "dotenv": "^16.0.1",
+    "mongoose": "^6.4.6",
+    "newspk": "^1.1.0"
+  }
+}
