@@ -35,7 +35,7 @@ let urduNews = mongoose.model('Urdu', urduSchema);
 
 newspk.news(5, 'english').then(async (data) => {
     for (var i = 0; i < data.length; i++) {
-        d = data[i];
+        let d = data[i];
         let len = await englishNews.countDocuments({
             unique_id: d.unique_id
         })
@@ -90,7 +90,7 @@ newspk.news(5, 'english').then(async (data) => {
 
 newspk.news(5, 'urdu').then(async (data) => {
     for (var i = 0; i < data.length; i++) {
-        d = data[i];
+        let d = data[i];
         let len = await urduNews.countDocuments({
             unique_id: d.unique_id
         })
