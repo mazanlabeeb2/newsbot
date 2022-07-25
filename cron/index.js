@@ -60,7 +60,7 @@ newspk.news(5, 'english').then(async (data) => {
                 });
                 var config = {
                     method: 'post',
-                    url: 'http://localhost:80/api',
+                    url: 'http://localhost:8080/api',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     },
@@ -116,7 +116,7 @@ newspk.news(5, 'urdu').then(async (data) => {
                  });
                  var config = {
                      method: 'post',
-                     url: 'http://localhost:80/api',
+                     url: 'http://localhost:8080/api',
                      headers: {
                          'Content-Type': 'application/x-www-form-urlencoded'
                      },

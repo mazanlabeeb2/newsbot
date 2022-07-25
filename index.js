@@ -6,7 +6,7 @@ const express = require('express');
 let moment = require('moment-timezone');
 
 const app = new express();
-const port = 80 || process.env.PORT;
+const port = 8080 || process.env.PORT;
 app.listen(port, () => { console.log(`Server: http://localhost:${port}`) });
 
 // +++++++++++++++++++Database Config +++++++++++++++++++++++
