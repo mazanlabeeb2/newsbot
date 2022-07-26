@@ -52,12 +52,12 @@ let englishNews = mongoose.model('english', englishSchema);
 let urduNews = mongoose.model('Urdu', urduSchema);
 // +++++++++++++++++++Database Config +++++++++++++++++++++++
 
-app.use(express.static('./temp'));
+app.use(express.static('./qr'));
 
 
 wppconnect.create({
   catchQR: (base64Qr, asciiQR) => {
-    // console.log(asciiQR); // Optional to log the QR in the terminal
+    console.log(asciiQR); // Optional to log the QR in the terminal
     var matches = base64Qr.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
       response = {};
 
@@ -69,7 +69,7 @@ wppconnect.create({
 
     var imageBuffer = response;
     require('fs').writeFile(
-      './temp/out.png',
+      './qr/out.png',
       imageBuffer['data'],
       'binary',
       function (err) {
