@@ -55,7 +55,8 @@ wppconnect.create({
   session: 'mySessionName',
   puppeteerOptions: {
     userDataDir: './tokens/mySessionName', // or your custom directory
-  }, 
+    args: ['--no-sandbox']
+  }, autoClose: false
   //  headless: true, // Headless chrome
   // devtools: false, // Open devtools by default
   // useChrome: false, 
@@ -70,17 +71,17 @@ wppconnect.create({
 function start(client) {
 
   app.use(express.urlencoded({ extended: true }));
-  app.post('/api',  (req, res) => {
-    users.find({language:req.body.language}).then(async (d) => {
+  app.post('/api', (req, res) => {
+    users.find({ language: req.body.language }).then(async (d) => {
       for (var i = 0; i < d.length; i++) {
-        let caption = `*${req.body.title.trim()}*\n \n${req.body.body.trim()}\n \n*Posted:* ${ moment(req.body.created_at).tz('Asia/Karachi').format('HH:mm, YYYY-MM-DD')}`;
+        let caption = `*${req.body.title.trim()}*\n \n${req.body.body.trim()}\n \n*Posted:* ${moment(req.body.created_at).tz('Asia/Karachi').format('HH:mm, YYYY-MM-DD')}`;
         await client
           .sendImage(
             d[i].user_id,
             req.body.thumbnail,
             'mazanlabeeb',
             caption
-          ).then((result) => { res.send('Sent to user.') ; }).catch((erro) => { console.error('Error when sending: ', erro); });
+          ).then((result) => { res.send('Sent to user.'); }).catch((erro) => { console.error('Error when sending: ', erro); });
       }
     })
 
