@@ -66,7 +66,6 @@ wppconnect.create({
 }).then((client) => start(client)).catch((error) => console.log(error));
 
 
-
 // server
 
 
