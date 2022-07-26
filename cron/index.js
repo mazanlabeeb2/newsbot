@@ -4,6 +4,8 @@ const mongoose = require('mongoose');
 var axios = require('axios');
 var qs = require('qs');
 
+const port = process.env.PORT || 8080;
+
 mongoose.connect(process.env.MONGO)
     .then(() => console.log('Database Connection : Ok'))
     .catch((e) => console.log('Database Connection : Failed\nError:' + e))
@@ -60,7 +62,7 @@ newspk.news(5, 'english').then(async (data) => {
                 });
                 var config = {
                     method: 'post',
-                    url: 'http://localhost:8080/api',
+                    url: 'http://localhost:'+PORT+'/api',
                     headers: {
                         'Content-Type': 'application/x-www-form-urlencoded'
                     },
@@ -116,7 +118,7 @@ newspk.news(5, 'urdu').then(async (data) => {
                  });
                  var config = {
                      method: 'post',
-                     url: 'http://localhost:8080/api',
+                     url: 'http://localhost:'+PORT+'/api',
                      headers: {
                          'Content-Type': 'application/x-www-form-urlencoded'
                      },
