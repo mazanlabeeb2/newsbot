@@ -1,5 +1,6 @@
 require('dotenv').config();
-
+const fs = require('fs');
+const path = require('path');
 const mongoose = require('mongoose');
 const wppconnect = require('@wppconnect-team/wppconnect');
 const express = require('express');
@@ -51,8 +52,35 @@ let englishNews = mongoose.model('english', englishSchema);
 let urduNews = mongoose.model('Urdu', urduSchema);
 // +++++++++++++++++++Database Config +++++++++++++++++++++++
 
+app.use(express.static('./temp'));
+
 
 wppconnect.create({
+  catchQR: (base64Qr, asciiQR) => {
+    // console.log(asciiQR); // Optional to log the QR in the terminal
+    var matches = base64Qr.match(/^data:([A-Za-z-+\/]+);base64,(.+)$/),
+      response = {};
+
+    if (matches.length !== 3) {
+      return new Error('Invalid input string');
+    }
+    response.type = matches[1];
+    response.data = new Buffer.from(matches[2], 'base64');
+
+    var imageBuffer = response;
+    require('fs').writeFile(
+      './temp/out.png',
+      imageBuffer['data'],
+      'binary',
+      function (err) {
+        if (err != null) {
+          console.log(err);
+        }
+      }
+    );
+  },
+  logQR: false,
+
   // ...
   session: 'mySessionName',
   puppeteerOptions: {
