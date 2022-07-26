@@ -59,9 +59,6 @@ wppconnect.create({
   //  headless: true, // Headless chrome
   // devtools: false, // Open devtools by default
   // useChrome: false, 
-  puppeteerOptions: {
-    executablePath: '/usr/share/man/man1/google-chrome.1.gz'
-  },
   // ...
 }).then((client) => start(client)).catch((error) => console.log(error));
 
